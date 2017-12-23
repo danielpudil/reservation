@@ -18,8 +18,9 @@ class LessonsController < ApplicationController
           @lastDay = Date.today.end_of_week.strftime('%d/%m/%Y')
           @roomTitle = Room.find(roomid).title
           @full = nil
-        rescue ActiveRecord::RecordNotFound => e
           @lesson = Lesson.where(room_id: roomid).sort_by &:start_at
+        rescue ActiveRecord::RecordNotFound => e
+          redirect_to lessons_path, notice: 'Lesson was not found.'
         end
       end
 

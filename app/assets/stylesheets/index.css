@@ -863,3 +863,14 @@ select {
     text-align: right;
     margin-right: 15px !important;
 }
+
+.dialog {
+    top: 52px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    background: #F44336;
+    padding: 10px;
+    color: white;
+    font-family: 'Heebo', sans-serif;
+}

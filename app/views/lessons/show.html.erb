@@ -2,6 +2,9 @@
 
 <%= link_to 'ZPĚT', rooms_path, class: 'back-submit' %>
 
+<% if @lesson.length == 0 %>
+    <p class="no-item">Žádné rezervace pro Vámi vybranou místnost...</p>
+<% else %>
     <section class="header-schedule" style="height: auto;" >
       <table class="table">
         <caption style="margin-bottom: 40px">
@@ -14,7 +17,7 @@
               <td><%= (@firstDay.to_date+i).strftime('%A') %></td>
 
               <% 13.times do |j| %>
-                  <% if @lesson %>
+                  <% if @lesson.length == 0 %>
                       <th><%= j+8 %>:00</th>
                   <% end %>
 
@@ -37,3 +40,4 @@
         <% end %>
       </table>
     </section>
+<% end %>
