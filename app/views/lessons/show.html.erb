@@ -14,7 +14,7 @@
               <td><%= (@firstDay.to_date+i).strftime('%A') %></td>
 
               <% 13.times do |j| %>
-                  <% if @lesson.length == 0 %>
+                  <% if @lesson %>
                       <th><%= j+8 %>:00</th>
                   <% end %>
 
