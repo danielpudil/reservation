@@ -1,0 +1,29 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<section class="header-schedule" style="height: auto; margin-top: 30px;" >
+  <table class="table-admin">
+    <caption style="margin-bottom: 40px">
+      <h1 style="min-height: 0;"> Seznam místností</h1>
+      <div class="button-box">
+        <%= link_to 'NOVÁ MÍSTNOST', new_admin_room_path, class: 'button-admin' %>
+      </div>
+    </caption>
+
+    <tr>
+      <td style="text-align: center">Název místnosti</td>
+      <td style="text-align: center">Kód místnosti</td>
+      <td style="text-align: center"></td>
+      <td></td>
+    </tr>
+
+    <% @rooms.each do |room| %>
+        <tr>
+          <th><%= room.title %></th>
+          <th><%= room.code %></th>
+          <th><%= link_to 'UPRAVIT', edit_admin_room_path(room), class: 'button-admin-edit' %></th>
+          <th><%= link_to 'SMAZAT', room, class: 'button-admin-remove', method: :delete, data: {confirm: 'Are you sure?' } %></th>
+        </tr>
+    <% end %>
+
+  </table>
+</section>

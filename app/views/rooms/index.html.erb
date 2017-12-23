@@ -1,0 +1,19 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<% if !@rooms.any? %>
+    <p class="no-item">žádné místnosti...</p>
+<% end %>
+
+<section class="header">
+  <% @rooms.each_with_index do |room, i| %>
+      <aside id="0" class="room room<%= i %>">
+        <div class="block">
+          <p><%= room.code %></p>
+          <h1><%= room.title %></h1>
+          <p class="description">Výběrem místnosti <%= room.title %> získáte informace o týdenních rezervacích.</p>
+
+          <%= link_to 'Rozvrh mistnosti', lesson_path(room.id), class: 'more' %>
+        </div>
+      </aside>
+  <% end %>
+</section>

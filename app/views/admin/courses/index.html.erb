@@ -1,0 +1,37 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<section class="header-schedule" style="height: auto; margin-top: 30px; margin-bottom: 50px" >
+  <table class="table-admin" style="width: 1100px">
+    <caption style="margin-bottom: 40px">
+      <h1 style="min-height: 0;"> Seznam kurzů</h1>
+      <div class="button-box">
+        <%= link_to 'NOVÝ KURZ', new_admin_course_path, class: 'button-admin' %>
+      </div>
+    </caption>
+
+    <tr>
+      <td style="text-align: center">Název</td>
+      <td style="text-align: center">Kód</td>
+      <td>Studenti</td>
+      <td>Učitelé</td>
+      <td>Typ studia</td>
+      <td>Jazyk</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <% @courses.each do |course| %>
+        <tr>
+          <th><%= course.title %></th>
+          <th><%= course.code %></th>
+          <th style="min-width: 150px; max-width: 200px;"><%= raw course.students.map{|q| q.first_name + ' ' + q.last_name}.join(', ') %></th>
+          <th style="min-width: 150px; max-width: 200px;"><%= raw course.teachers.map{|q| q.first_name + ' ' + q.last_name}.join(', ') %></th>
+          <th><%= course.study_type %></th>
+          <th><%= course.language %></th>
+          <th><%= link_to 'UPRAVIT', edit_admin_course_path(course), class: 'button-admin-edit' %></th>
+          <th><%= link_to 'SMAZAT', course, class: 'button-admin-remove', method: :delete, data: {confirm: 'Are you sure?' } %></th>
+        </tr>
+    <% end %>
+
+  </table>
+</section>

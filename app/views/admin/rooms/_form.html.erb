@@ -1,0 +1,32 @@
+<%= simple_form_for(@room) do |form| %>
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+      <% room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-block">
+    <%= form.label :title, class: 'label'  %>
+    <%= form.text_field :title, id: :room_title, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :code, class: 'label'  %>
+    <%= form.text_field :code, id: :room_code, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :building_id, class: 'label'  %>
+    <%= form.select :building_id, Building.all.map{|s|[s.title, s.id]}, class: 'input' %>
+  </div>
+
+  <div class="form-block-submit">
+    <%= form.button :magic_submit, class: 'submit'  %>
+  </div>
+<% end %>

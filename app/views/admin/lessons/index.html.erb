@@ -1,0 +1,37 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<section class="header-schedule" style="height: auto; margin-top: 30px;" >
+  <table class="table-admin">
+    <caption style="margin-bottom: 40px">
+      <h1 style="min-height: 0;"> Seznam lekcí</h1>
+      <div class="button-box">
+        <%= link_to 'NOVÁ LEKCE', new_admin_lesson_path, class: 'button-admin' %>
+      </div>
+    </caption>
+
+    <tr>
+      <td style="text-align: center">Čas od</td>
+      <td style="text-align: center">Čas do</td>
+      <td style="text-align: center">Durration</td>
+      <td style="text-align: center">Místnost</td>
+      <td style="text-align: center">Vyučující</td>
+      <td style="text-align: center">Předmět</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <% @lessons.each do |lesson| %>
+        <tr>
+          <th><%= lesson.start_at.strftime('%d.%m.%Y %H:%M') %></th>
+          <th><%= lesson.end_at.strftime('%d.%m.%Y %H:%M') %></th>
+          <th><%= lesson.durration %></th>
+          <th><%= Room.find(lesson.room_id).title if Room.any? %></th>
+          <th><%= Teacher.find(lesson.teacher_id).first_name %>  <%= Teacher.find(lesson.teacher_id).last_name %></th>
+          <th><%= Course.find(lesson.course_id).title %></th>
+          <th><%= link_to 'UPRAVIT', edit_admin_lesson_path(lesson), class: 'button-admin-edit' %></th>
+          <th><%= link_to 'SMAZAT', lesson, class: 'button-admin-remove', method: :delete, data: {confirm: 'Are you sure?' } %></th>
+        </tr>
+    <% end %>
+
+  </table>
+</section>

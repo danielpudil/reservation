@@ -1,0 +1,43 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<%= link_to 'ZPĚT', rooms_path, class: 'back-submit' %>
+
+<% if @lesson.length == 0 %>
+    <p class="no-item">Žádné rezervace pro Vámi vybranou místnost...</p>
+<% else %>
+    <section class="header-schedule" style="height: auto;" >
+      <table class="table">
+        <caption style="margin-bottom: 40px">
+          <h1 style="min-height: 0;">Rezervace místnosti <%= @roomTitle %></h1>
+          <p class="no-shadow">(<%= @firstDay %> - <%= @lastDay %>)</p>
+        </caption>
+
+        <% 7.times do |i| %>
+            <tr <% link_to lesson_path %>>
+              <td><%= (@firstDay.to_date+i).strftime('%A') %></td>
+
+              <% 13.times do |j| %>
+                  <% if @lesson.length == 0 %>
+                      <th><%= j+8 %>:00</th>
+                  <% end %>
+
+                  <% @full = false %>
+                  <% @lesson.each_with_index do |lesson, k| %>
+                      <% if lesson.start_at.to_date == @firstDay.to_date+i && (lesson.start_at.strftime('%H').to_i == (j+8).to_i or ((j+8).to_i > lesson.start_at.strftime('%H').to_i && (j+8).to_i < lesson.end_at.strftime('%H').to_i)) %>
+                          <th class="full">
+                            <p class="full-text"><%= j+8 %>:00</p>
+                            <%= Course.find(lesson.course_id).code %>
+                          </th>
+                          <% @full = true %>
+                          <% break %>
+                      <% end %>
+                      <% if !@full && k == @lesson.length-1 %>
+                          <th><%= j+8 %>:00</th>
+                      <% end %>
+                  <% end %>
+              <% end %>
+            </tr>
+        <% end %>
+      </table>
+    </section>
+<% end %>

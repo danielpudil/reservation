@@ -1,0 +1,21 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<% if !@buildings.any? %>
+    <p class="no-item">žádné budovy...</p>
+<% end %>
+
+<section class="header">
+  <% @buildings.each_with_index do |building, i| %>
+      <aside id="0" class="building building<%= i %>">
+        <div class="block">
+          <p><%= building.address ? building.address : '' %></p>
+          <h1><%= building.title %></h1>
+          <p class="description">Výběrem budovy <%= building.title %> získáte informace o rezervacích na místnosti v této budově.</p>
+
+          <%= link_to 'Zobrazit místnosti', room_path(building.id), class: 'more' %>
+
+          <%= link_to 'Zobrazit denní přehled', building_today_path(building.id), class: 'more-today' %>
+        </div>
+      </aside>
+  <% end %>
+</section>

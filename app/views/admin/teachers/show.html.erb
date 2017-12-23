@@ -1,0 +1,10 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<h1 style="margin-bottom: 15px;" class="no-item">Teachers</h1>
+
+<% @teacher.each do |teacher| %>
+    <div style="float:left; margin-bottom: 15px; width: 100%;">
+      <p style="margin: 0;" class="no-item"><%= teacher.first_name + " " + teacher.last_name %></p>
+      <p style="margin: 0;" class="no-item"><%= teacher.email %></p>
+    </div>
+<% end %>

@@ -1,0 +1,31 @@
+<%= simple_form_for(@teacher) do |form| %>
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-block">
+    <%= form.label :first_name, class: 'label' %>
+    <%= form.text_field :first_name, id: :teacher_first_name, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :last_name, class: 'label' %>
+    <%= form.text_field :last_name, id: :teacher_last_name, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :email, class: 'label' %>
+    <%= form.text_field :email, id: :teacher_email, class: 'input' %>
+  </div>
+
+  <div class="form-block-submit">
+    <%= form.button :magic_submit, class: 'submit'  %>  </div>
+<% end %>

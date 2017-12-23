@@ -1,0 +1,45 @@
+<%= link_to 'ZPĚT', root_path, class: 'back-submit' %>
+
+<h1 class="no-item" style="margin-top: 80px; min-height: auto;">
+  Denní přehled v budově <%= Building.find(@id).title if Building.any? %>
+</h1>
+<p class="no-item" style="margin-top: 0; margin-bottom: 20px;">
+  <%= @date %>
+</p>
+
+<section class="header-today" style=" width: 60%;">
+  <div class="line">
+    <div class="time">
+      <p>Čas</p>
+    </div>
+    <div class="event">
+      <p>Předmět</p>
+      <p>Vyučující</p>
+      <p class="today-student">Studenti</p>
+      <p class="today-student">Místnost</p>
+    </div>
+  </div>
+
+  <% @room.each do |room| %>
+    <% @lesson = Lesson.where(room_id: room.id).sort_by &:start_at %>
+    <% @lesson.each do |lesson| %>
+          <% if @date === lesson.start_at.strftime('%d.%m.%Y') %>
+            <div class="line">
+              <div class="time">
+                <p><%= lesson.start_at.strftime('%H:%M') + ' - ' + lesson.end_at.strftime('%H:%M') %></p>
+              </div>
+              <div class="event">
+                <p><%= Course.find(lesson.course_id).title %></p>
+                <p>
+                  <%= Teacher.find(lesson.teacher_id).first_name + ' ' + Teacher.find(lesson.teacher_id).last_name %>
+                </p>
+                <p class="today-student">
+                  <%= Course.find(lesson.course_id).students.count if Course.where(room_id: lesson.room_id) %>
+                </p>
+                <p class="today-student"><%= Room.find(lesson.room_id).title %></p>
+              </div>
+            </div>
+          <% end %>
+    <% end %>
+  <% end %>
+</section>

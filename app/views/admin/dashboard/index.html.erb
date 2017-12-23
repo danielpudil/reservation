@@ -1,0 +1,49 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<h1 class="dashboard-title" style="min-height: auto;">DASHBOARD</h1>
+
+<section class="header-schedule" style="height: auto;" >
+  <div class="entities">
+    <div class="entity">
+      <h1 class="entity-title">Budovy</h1>
+      <p class="entity-text">Umožňuje správu budov...</p>
+      <p class="entity-count">Počet (<%= Building.count %>)</p>
+      <%= link_to 'ZOBRAZIT', admin_buildings_path, class: 'entity-button' %>
+    </div>
+
+    <div class="entity">
+      <h1 class="entity-title">Místnosti</h1>
+      <p class="entity-text">Umožňuje správu místností...</p>
+      <p class="entity-count">Počet (<%= Room.count %>)</p>
+      <%= link_to 'ZOBRAZIT', admin_rooms_path, class: 'entity-button' %>
+    </div>
+
+    <div class="entity">
+      <h1 class="entity-title">Lekce</h1>
+      <p class="entity-text">Umožňuje správu lekcí...</p>
+      <p class="entity-count">Počet (<%= Lesson.count %>)</p>
+      <%= link_to 'ZOBRAZIT', admin_lessons_path, class: 'entity-button' %>
+    </div>
+
+    <div class="entity">
+      <h1 class="entity-title">Vyučující</h1>
+      <p class="entity-text">Umožňuje správu vyučujících...</p>
+      <p class="entity-count">Počet (<%= Teacher.count %>)</p>
+      <%= link_to 'ZOBRAZIT', admin_teachers_path, class: 'entity-button' %>
+    </div>
+
+    <div class="entity">
+      <h1 class="entity-title">Předměty</h1>
+      <p class="entity-text">Umožňuje správu předmětů...</p>
+      <p class="entity-count">Počet (<%= Course.count %>)</p>
+      <%= link_to 'ZOBRAZIT', admin_courses_path, class: 'entity-button' %>
+    </div>
+
+    <div class="entity">
+      <h1 class="entity-title">Studenti</h1>
+      <p class="entity-text">Umožňuje správu studentů...</p>
+      <p class="entity-count">Počet (<%= Student.count %>)</p>
+      <%= link_to 'ZOBRAZIT', admin_students_path, class: 'entity-button' %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<%= simple_form_for(@lesson) do |form| %>
+  <% if @lesson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+      <ul>
+      <% lesson.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-block">
+    <%= form.label :start_at, class: 'label' %>
+    <%= form.datetime_select :start_at, id: :lesson_start_at, minute_step: 60, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :end_at, class: 'label' %>
+    <%= form.datetime_select :end_at, id: :lesson_end_at, minute_step: 60, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :durration, class: 'label' %>
+    <%= form.number_field :durration, id: :lesson_durration, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :room_id, class: 'label' %>
+    <%= form.select :room_id, Room.all.map{|s|[s.title, s.id]}, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :teacher_id, class: 'label' %>
+    <%= form.select :teacher_id, Teacher.all.map{|s|[s.first_name + ' ' + s.last_name, s.id]}, class: 'input' %>
+  </div>
+
+  <div class="form-block">
+    <%= form.label :course_id, class: 'label' %>
+    <%= form.select :course_id, Course.all.map{|s|[s.title, s.id]}, class: 'select' %>
+  </div>
+
+  <div class="form-block-submit">
+    <%= form.button :magic_submit, class: 'submit'  %>
+  </div>
+<% end %>

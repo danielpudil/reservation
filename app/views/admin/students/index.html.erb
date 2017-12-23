@@ -1,0 +1,33 @@
+<div class="alert alert-success" role="alert"><%= notice %></div>
+
+<section class="header-schedule" style="height: auto; margin-top: 30px;" >
+  <table class="table-admin">
+    <caption style="margin-bottom: 40px">
+      <h1 style="min-height: 0;">Seznam studentů</h1>
+      <div class="button-box">
+        <%= link_to 'NOVÝ STUDENT', new_admin_student_path, class: 'button-admin' %>
+      </div>
+    </caption>
+
+    <tr>
+      <td style="text-align: center">Jméno</td>
+      <td style="text-align: center">Příjmení</td>
+      <td style="text-align: center">Email</td>
+      <td style="text-align: center">Typ studia</td>
+      <td style="text-align: center"></td>
+      <td></td>
+    </tr>
+
+    <% @students.each do |student| %>
+        <tr>
+          <th><%= student.first_name %></th>
+          <th><%= student.last_name %></th>
+          <th><%= student.email %></th>
+          <th><%= student.study_type %></th>
+          <th><%= link_to 'UPRAVIT', edit_admin_student_path(student), class: 'button-admin-edit' %></th>
+          <th><%= link_to 'SMAZAT', student, class: 'button-admin-remove', method: :delete, data: {confirm: 'Are you sure?' } %></th>
+        </tr>
+    <% end %>
+
+  </table>
+</section>
