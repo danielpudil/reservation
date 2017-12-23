@@ -2,9 +2,6 @@
 
 <%= link_to 'ZPĚT', rooms_path, class: 'back-submit' %>
 
-<% if !@lesson.any? %>
-    <p class="no-item">Žádné rezervace pro Vámi vybranou místnost...</p>
-<% else %>
     <section class="header-schedule" style="height: auto;" >
       <table class="table">
         <caption style="margin-bottom: 40px">
@@ -40,4 +37,3 @@
         <% end %>
       </table>
     </section>
-<% end %>
