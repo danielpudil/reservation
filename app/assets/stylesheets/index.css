@@ -254,7 +254,7 @@ input[button] {
 .building0, .room0 {
     background: #72616E;
 
-    background-image: url(parukarka.jpg);
+    background-image: url(http://danielpudil.cz/img/parukarka.jpg);
     background-position: center;
     background-size: auto 100%;
 
@@ -264,13 +264,13 @@ input[button] {
 }
 
 .room0 {
-    background-image: url(parukarka_0.jpg);
+    background-image: url(http://danielpudil.cz/img/parukarka_0.jpg);
 }
 
 .building1, .room1 {
     background: #E6846E;
 
-    background-image: url(areal.jpg);
+    background-image: url(http://danielpudil.cz/img/areal.jpg);
     background-position: center;
     background-size: auto 100%;
 
@@ -280,13 +280,13 @@ input[button] {
 }
 
 .room1 {
-    background-image: url(parukarka_1.jpg);
+    background-image: url(http://danielpudil.cz/img/parukarka_1.jpg);
 }
 
 .building2, .room2 {
     background: #1A538C;
 
-    background-image: url(kolbenova.jpeg);
+    background-image: url(http://danielpudil.cz/img/kolbenova.jpeg);
     background-position: center;
     background-size: auto 100%;
 
@@ -296,13 +296,13 @@ input[button] {
 }
 
 .room2 {
-    background-image: url(parukarka_2.jpg);
+    background-image: url(http://danielpudil.cz/img/parukarka_2.jpg);
 }
 
 .building3, .room3 {
     background: #e34d4f;
 
-    background-image: url(hall.jpg);
+    background-image: url(http://danielpudil.cz/img/hall.jpg);
     background-position: center;
     background-size: auto 100%;
 
@@ -312,7 +312,7 @@ input[button] {
 }
 
 .room3 {
-    background-image: url(parukarka_3.jpg);
+    background-image: url(http://danielpudil.cz/img/parukarka_3.jpg);
 }
 
 .room {
